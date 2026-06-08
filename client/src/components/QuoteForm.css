@@ -1,0 +1,239 @@
+.quote-form {
+    background-color: #f0f0f0;
+    padding: 50px 40px;
+    display: flex;
+    align-items: flex-start;
+    min-height: 100%;
+}
+
+.quote-container {
+    max-width: 100%;
+    width: 100%;
+}
+
+.quote-form h2 {
+    text-align: center;
+    margin-bottom: 35px;
+    font-size: 36px;
+    color: #222;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.quote-form input,
+.quote-form textarea {
+    width: 100%;
+    padding: 14px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 15px;
+    font-family: inherit;
+    transition: border-color 0.3s;
+    background-color: white;
+}
+
+    .quote-form input:focus,
+    .quote-form textarea:focus {
+        outline: none;
+        border-color: #003087;
+    }
+
+.parcel-types {
+    margin: 25px 0;
+}
+
+.parcel-label {
+    display: block;
+    margin-bottom: 15px;
+    font-weight: 600;
+    font-size: 16px;
+    color: #333;
+}
+
+.parcel-options {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+}
+
+.parcel-option {
+    padding: 20px 15px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: white;
+    display: block;
+}
+
+    .parcel-option:hover {
+        border-color: #003087;
+        background-color: #f8f9ff;
+    }
+
+    .parcel-option.selected {
+        border-color: #003087;
+        background-color: #003087;
+        color: white;
+    }
+
+    .parcel-option input[type="radio"] {
+        display: none;
+    }
+
+.parcel-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.parcel-icon-svg {
+    width: 40px;
+    height: 40px;
+    color: #666;
+    transition: color 0.3s ease;
+}
+
+    .parcel-icon-svg svg {
+        width: 100%;
+        height: 100%;
+    }
+
+.parcel-option.selected .parcel-icon-svg {
+    color: white;
+}
+
+.parcel-text {
+    font-weight: 600;
+    font-size: 14px;
+    color: #333;
+    transition: color 0.3s ease;
+}
+
+.parcel-option.selected .parcel-text {
+    color: white;
+}
+
+.quote-form textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 16px;
+    background-color: #003087;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 17px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 10px;
+}
+
+    .submit-btn:hover:not(:disabled) {
+        background-color: #002166;
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(0,48,135,0.3);
+    }
+
+    .submit-btn:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+    }
+
+.status-message {
+    text-align: center;
+    margin-top: 20px;
+    padding: 15px;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 15px;
+}
+
+    .status-message.success {
+        background-color: #d4edda;
+        color: #155724;
+        border: 1px solid #c3e6cb;
+    }
+
+    .status-message.error {
+        background-color: #f8d7da;
+        color: #721c24;
+        border: 1px solid #f5c6cb;
+    }
+
+.contact-options {
+    margin-top: 30px;
+    text-align: center;
+    padding-top: 25px;
+    border-top: 2px solid #ddd;
+}
+
+    .contact-options p {
+        margin-bottom: 15px;
+        color: #666;
+        font-size: 15px;
+    }
+
+.contact-buttons {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+}
+
+.contact-btn {
+    padding: 12px 30px;
+    border: 2px solid #003087;
+    background: white;
+    color: #003087;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 15px;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+}
+
+    .contact-btn:hover {
+        background: #003087;
+        color: white;
+        transform: translateY(-2px);
+    }
+
+@media (max-width: 768px) {
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+
+    .parcel-options {
+        grid-template-columns: 1fr;
+    }
+
+    .quote-form {
+        padding: 40px 20px;
+    }
+
+        .quote-form h2 {
+            font-size: 28px;
+        }
+
+    .contact-buttons {
+        flex-direction: column;
+    }
+
+    .parcel-icon-svg {
+        width: 35px;
+        height: 35px;
+    }
+}

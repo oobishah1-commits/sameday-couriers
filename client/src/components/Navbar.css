@@ -1,0 +1,113 @@
+.top-bar {
+    background-color: #003087;
+    color: white;
+    padding: 10px 0;
+    font-size: 14px;
+}
+
+.top-bar-content {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.contact-info {
+    display: flex;
+    gap: 25px;
+}
+
+.top-link {
+    color: white;
+    text-decoration: none;
+    transition: opacity 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+    .top-link:hover {
+        opacity: 0.8;
+    }
+
+.navbar {
+    background-color: white;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    padding: 15px 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.nav-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Text Logo Styles */
+.text-logo {
+    display: flex;
+    flex-direction: column;
+    line-height: 1;
+}
+
+    .text-logo h2 {
+        color: #003087;
+        font-size: 28px;
+        font-weight: 800;
+        margin: 0;
+        letter-spacing: 1px;
+    }
+
+    .text-logo p {
+        color: #666;
+        font-size: 14px;
+        margin: 0;
+        font-weight: 500;
+    }
+
+/* Image Logo Styles (when you add an image) */
+.logo img {
+    height: 60px;
+    width: auto;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 35px;
+    margin: 0;
+    padding: 0;
+}
+
+    .nav-links a {
+        text-decoration: none;
+        color: #333;
+        font-weight: 600;
+        font-size: 16px;
+        transition: color 0.3s;
+    }
+
+        .nav-links a:hover {
+            color: #003087;
+        }
+
+@media (max-width: 768px) {
+    .nav-links {
+        gap: 15px;
+        font-size: 14px;
+    }
+
+    .text-logo h2 {
+        font-size: 20px;
+    }
+
+    .text-logo p {
+        font-size: 12px;
+    }
+
+    .contact-info {
+        gap: 15px;
+        font-size: 12px;
+    }
+}
