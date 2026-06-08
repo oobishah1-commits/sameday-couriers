@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import './QuoteForm.css';
-import { CONTACT_INFO, getCallLink, getWhatsAppLink } from '../config';
+import { getCallLink, getWhatsAppLink } from '../config';
 
 const QuoteForm = () => {
     const [formData, setFormData] = useState({
@@ -60,7 +60,6 @@ const QuoteForm = () => {
         setIsLoading(true);
         setStatus('Sending...');
 
-        // Use different URL for production vs development
         const API_URL = process.env.NODE_ENV === 'production'
             ? '/api/quote'
             : 'http://localhost:5000/api/quote';
