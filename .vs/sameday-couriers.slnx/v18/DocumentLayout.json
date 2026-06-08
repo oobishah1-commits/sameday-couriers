@@ -3,16 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\Optimus Prime\\OneDrive\\Desktop\\sameday-couriers\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Optimus Prime\\OneDrive\\Desktop\\sameday-couriers\\client\\src\\components\\QuoteForm.jsx||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:client\\src\\components\\QuoteForm.jsx||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Optimus Prime\\OneDrive\\Desktop\\sameday-couriers\\.env||{8B382828-6202-11D1-8870-0000F87579D2}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:.env||{8B382828-6202-11D1-8870-0000F87579D2}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Optimus Prime\\OneDrive\\Desktop\\sameday-couriers\\server\\.env||{8B382828-6202-11D1-8870-0000F87579D2}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:server\\.env||{8B382828-6202-11D1-8870-0000F87579D2}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Optimus Prime\\OneDrive\\Desktop\\sameday-couriers\\client\\src\\components\\QuoteForm.jsx||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:client\\src\\components\\QuoteForm.jsx||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Optimus Prime\\OneDrive\\Desktop\\sameday-couriers\\vercel.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
@@ -50,30 +50,29 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": ".env",
               "DocumentMoniker": "C:\\Users\\Optimus Prime\\OneDrive\\Desktop\\sameday-couriers\\.env",
               "RelativeDocumentMoniker": ".env",
               "ToolTip": "C:\\Users\\Optimus Prime\\OneDrive\\Desktop\\sameday-couriers\\.env",
               "RelativeToolTip": ".env",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAeAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2026-06-08T01:55:57.473Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-06-08T01:55:57.473Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 0,
               "Title": "QuoteForm.jsx",
               "DocumentMoniker": "C:\\Users\\Optimus Prime\\OneDrive\\Desktop\\sameday-couriers\\client\\src\\components\\QuoteForm.jsx",
               "RelativeDocumentMoniker": "client\\src\\components\\QuoteForm.jsx",
               "ToolTip": "C:\\Users\\Optimus Prime\\OneDrive\\Desktop\\sameday-couriers\\client\\src\\components\\QuoteForm.jsx",
               "RelativeToolTip": "client\\src\\components\\QuoteForm.jsx",
-              "ViewState": "AgIAADAAAAAAAAAAAAAmwDkAAAAIAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAOgAAAAZAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003663|",
               "WhenOpened": "2026-06-08T01:53:08.989Z",
               "EditorCaption": ""
@@ -88,8 +87,7 @@
               "RelativeToolTip": "vercel.json",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2026-06-08T01:52:33.182Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-06-08T01:52:33.182Z"
             },
             {
               "$type": "Document",
@@ -101,8 +99,7 @@
               "RelativeToolTip": "api\\package.json",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2026-06-08T01:51:28.96Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-06-08T01:51:28.96Z"
             },
             {
               "$type": "Document",
@@ -114,8 +111,7 @@
               "RelativeToolTip": "api\\quote.js",
               "ViewState": "AgIAAFkAAAAAAAAAAAAmwHYAAAACAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2026-06-08T01:50:55.937Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-06-08T01:50:55.937Z"
             },
             {
               "$type": "Document",
@@ -127,8 +123,7 @@
               "RelativeToolTip": "server\\server.js",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAMoAAAADAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2026-06-08T00:27:36.157Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-06-08T00:27:36.157Z"
             },
             {
               "$type": "Document",
@@ -144,7 +139,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": ".env",
               "DocumentMoniker": "C:\\Users\\Optimus Prime\\OneDrive\\Desktop\\sameday-couriers\\server\\.env",
               "RelativeDocumentMoniker": "server\\.env",
@@ -152,8 +147,7 @@
               "RelativeToolTip": "server\\.env",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2026-06-08T00:08:43.878Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-06-08T00:08:43.878Z"
             },
             {
               "$type": "Document",
