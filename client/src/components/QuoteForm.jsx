@@ -60,11 +60,16 @@ const QuoteForm = () => {
         setIsLoading(true);
         setStatus('Sending...');
 
+        // Use different URL for production vs development
+        const API_URL = process.env.NODE_ENV === 'production'
+            ? '/api/quote'
+            : 'http://localhost:5000/api/quote';
+
         try {
-            const response = await axios.post('http://localhost:5000/api/quote', formData);
+            const response = await axios.post(API_URL, formData);
 
             if (response.data.success) {
-                setStatus('✅ Quote request sent successfully! We will contact you soon.');
+                setStatus('✅ Quote request sent successfully! Check your email for confirmation.');
                 setFormData({
                     name: '',
                     phone: '',
