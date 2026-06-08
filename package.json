@@ -1,14 +1,7 @@
 {
   "name": "sameday-couriers",
   "version": "1.0.0",
-  "description": "Sameday Indus Couriers Website",
-  "private": true,
   "scripts": {
-    "build": "cd client && npm install && npm run build",
-    "start": "cd client && npm start"
-  },
-  "workspaces": [
-    "client",
-    "api"
-  ]
+    "vercel-build": "cd client && npm install && npm run build"
+  }
 }

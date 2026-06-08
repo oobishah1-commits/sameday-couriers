@@ -3,12 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\Optimus Prime\\OneDrive\\Desktop\\sameday-couriers\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Optimus Prime\\OneDrive\\Desktop\\sameday-couriers\\.vercelignore||{8B382828-6202-11D1-8870-0000F87579D2}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:.vercelignore||{8B382828-6202-11D1-8870-0000F87579D2}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Optimus Prime\\OneDrive\\Desktop\\sameday-couriers\\vercel.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:vercel.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Optimus Prime\\OneDrive\\Desktop\\sameday-couriers\\package.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:package.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Optimus Prime\\OneDrive\\Desktop\\sameday-couriers\\.vercelignore||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:.vercelignore||{8B382828-6202-11D1-8870-0000F87579D2}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Optimus Prime\\OneDrive\\Desktop\\sameday-couriers\\api\\package.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
@@ -54,11 +58,24 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
+              "Title": "package.json",
+              "DocumentMoniker": "C:\\Users\\Optimus Prime\\OneDrive\\Desktop\\sameday-couriers\\package.json",
+              "RelativeDocumentMoniker": "package.json",
+              "ToolTip": "C:\\Users\\Optimus Prime\\OneDrive\\Desktop\\sameday-couriers\\package.json",
+              "RelativeToolTip": "package.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-06-08T07:54:44.082Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": ".vercelignore",
               "DocumentMoniker": "C:\\Users\\Optimus Prime\\OneDrive\\Desktop\\sameday-couriers\\.vercelignore",
               "RelativeDocumentMoniker": ".vercelignore",
@@ -71,7 +88,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": ".env",
               "DocumentMoniker": "C:\\Users\\Optimus Prime\\OneDrive\\Desktop\\sameday-couriers\\.env",
               "RelativeDocumentMoniker": ".env",
@@ -83,7 +100,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "QuoteForm.jsx",
               "DocumentMoniker": "C:\\Users\\Optimus Prime\\OneDrive\\Desktop\\sameday-couriers\\client\\src\\components\\QuoteForm.jsx",
               "RelativeDocumentMoniker": "client\\src\\components\\QuoteForm.jsx",
@@ -95,20 +112,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "vercel.json",
               "DocumentMoniker": "C:\\Users\\Optimus Prime\\OneDrive\\Desktop\\sameday-couriers\\vercel.json",
               "RelativeDocumentMoniker": "vercel.json",
               "ToolTip": "C:\\Users\\Optimus Prime\\OneDrive\\Desktop\\sameday-couriers\\vercel.json",
               "RelativeToolTip": "vercel.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAABAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
               "WhenOpened": "2026-06-08T01:52:33.182Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "package.json",
               "DocumentMoniker": "C:\\Users\\Optimus Prime\\OneDrive\\Desktop\\sameday-couriers\\api\\package.json",
               "RelativeDocumentMoniker": "api\\package.json",
@@ -116,12 +133,11 @@
               "RelativeToolTip": "api\\package.json",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2026-06-08T01:51:28.96Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-06-08T01:51:28.96Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "quote.js",
               "DocumentMoniker": "C:\\Users\\Optimus Prime\\OneDrive\\Desktop\\sameday-couriers\\api\\quote.js",
               "RelativeDocumentMoniker": "api\\quote.js",
@@ -129,12 +145,11 @@
               "RelativeToolTip": "api\\quote.js",
               "ViewState": "AgIAAF0AAAAAAAAAAAAmwHoAAAACAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2026-06-08T01:50:55.937Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-06-08T01:50:55.937Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 8,
               "Title": "server.js",
               "DocumentMoniker": "C:\\Users\\Optimus Prime\\OneDrive\\Desktop\\sameday-couriers\\server\\server.js",
               "RelativeDocumentMoniker": "server\\server.js",
@@ -146,7 +161,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 11,
               "Title": "package.json",
               "DocumentMoniker": "C:\\Users\\Optimus Prime\\OneDrive\\Desktop\\sameday-couriers\\server\\package.json",
               "RelativeDocumentMoniker": "server\\package.json",
@@ -158,7 +173,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": ".env",
               "DocumentMoniker": "C:\\Users\\Optimus Prime\\OneDrive\\Desktop\\sameday-couriers\\server\\.env",
               "RelativeDocumentMoniker": "server\\.env",
@@ -170,7 +185,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 10,
               "Title": "config.js",
               "DocumentMoniker": "C:\\Users\\Optimus Prime\\OneDrive\\Desktop\\sameday-couriers\\client\\src\\config.js",
               "RelativeDocumentMoniker": "client\\src\\config.js",
@@ -182,7 +197,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 9,
               "Title": "Services.jsx",
               "DocumentMoniker": "C:\\Users\\Optimus Prime\\OneDrive\\Desktop\\sameday-couriers\\client\\src\\components\\Services.jsx",
               "RelativeDocumentMoniker": "client\\src\\components\\Services.jsx",
