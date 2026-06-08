@@ -1,8 +1,7 @@
 {
   "ExpandedNodes": [
-    "",
-    "\\api"
+    ""
   ],
-  "SelectedNode": "\\.vercelignore",
+  "SelectedNode": "\\vercel.json",
   "PreviewInSolutionExplorer": false
 }
