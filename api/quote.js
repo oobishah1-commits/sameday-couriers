@@ -103,17 +103,21 @@ module.exports = async (req, res) => {
 
     try {
         await transporter.sendMail(adminMailOptions);
+        console.log('Admin email sent');
+
         await transporter.sendMail(clientMailOptions);
+        console.log('Client email sent');
 
         return res.status(200).json({
             success: true,
             message: 'Quote request sent successfully!'
         });
     } catch (error) {
-        console.error('Error:', error);
+        console.error('Error sending email:', error);
         return res.status(500).json({
             success: false,
-            message: 'Failed to send quote request.'
+            message: 'Failed to send quote request.',
+            error: error.message
         });
     }
 };

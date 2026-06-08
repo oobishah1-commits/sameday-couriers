@@ -2,10 +2,10 @@
   "ExpandedNodes": [
     "",
     "\\api",
-    "\\client",
     "\\client\\src",
     "\\client\\src\\components",
     "\\server"
   ],
+  "SelectedNode": "\\api\\quote.js",
   "PreviewInSolutionExplorer": false
 }
