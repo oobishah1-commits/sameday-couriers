@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#003087" />
+      <stop offset="100%" stop-color="#001845" />
+    </linearGradient>
+    <linearGradient id="accentGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#FF9900" />
+      <stop offset="100%" stop-color="#FFC107" />
+    </linearGradient>
+  </defs>
+  <!-- Background Tile -->
+  <rect width="512" height="512" rx="120" fill="url(#bgGrad)" />
+  <!-- Motion Lines -->
+  <path d="M 50 200 L 160 200" stroke="#FF9900" stroke-width="26" stroke-linecap="round" />
+  <path d="M 80 255 L 145 255" stroke="#FF9900" stroke-width="20" stroke-linecap="round" opacity="0.8" />
+  <path d="M 35 310 L 175 310" stroke="#FF9900" stroke-width="26" stroke-linecap="round" />
+  <!-- Delivery Van Main Body -->
+  <path d="M 175 190 H 350 C 370 190 385 205 385 225 V 305 H 175 V 190 Z" fill="#FFFFFF" />
+  <!-- Front Cabin -->
+  <path d="M 385 225 L 438 250 C 448 255 452 265 452 275 V 305 H 385 V 225 Z" fill="#FFFFFF" />
+  <!-- Cabin Window -->
+  <path d="M 395 238 H 425 L 438 268 H 395 V 238 Z" fill="#003087" />
+  <!-- Speed Accent Line -->
+  <path d="M 205 240 L 345 240" stroke="url(#accentGrad)" stroke-width="18" stroke-linecap="round" />
+  <!-- Wheels -->
+  <circle cx="235" cy="315" r="42" fill="#111827" stroke="#FFFFFF" stroke-width="10" />
+  <circle cx="235" cy="315" r="16" fill="#FF9900" />
+  <circle cx="395" cy="315" r="42" fill="#111827" stroke="#FFFFFF" stroke-width="10" />
+  <circle cx="395" cy="315" r="16" fill="#FF9900" />
+</svg>
