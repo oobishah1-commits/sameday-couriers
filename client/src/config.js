@@ -3,7 +3,7 @@ export const CONTACT_INFO = {
     phone: '+447561311211',
     phoneDisplay: '+44 7561 311211',
     whatsappNumber: '447561311211', // Without + and spaces
-    email: 'oobishah1@gmail.com', // Updated email
+    email: 'contact.samedayinduscourier@gmail.com', // Updated email
     address: {
         line1: '18 High Terrace 128',
         city: 'Birmingham',

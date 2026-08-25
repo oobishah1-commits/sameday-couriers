@@ -43,7 +43,7 @@ export default async function handler(req, res) {
         // EMAIL 1: Send to Admin (you)
         const adminMailOptions = {
             from: process.env.EMAIL_USER,
-            to: 'oobishah1@gmail.com',
+            to: process.env.EMAIL_USER || 'contact.samedayinduscourier@gmail.com',
             subject: 'New Quote Request - Sameday Indus Couriers',
             html: `
         <div style="font-family: Arial, sans-serif; padding: 20px; background-color: #f4f4f4;">
@@ -103,7 +103,7 @@ export default async function handler(req, res) {
         };
 
         await transporter.sendMail(adminMailOptions);
-        console.log('✅ Admin email sent to oobishah1@gmail.com');
+        console.log(`✅ Admin email sent to ${process.env.EMAIL_USER}`);
 
         // EMAIL 2: Send Confirmation to Client
         const clientMailOptions = {
@@ -175,7 +175,7 @@ export default async function handler(req, res) {
                 <strong>WhatsApp:</strong> <a href="https://wa.me/447561311211" style="color: white; text-decoration: none;">+44 7561 311211</a>
               </p>
               <p style="margin: 10px 0; font-size: 16px;">
-                <strong>Email:</strong> <a href="mailto:oobishah1@gmail.com" style="color: white; text-decoration: none;">oobishah1@gmail.com</a>
+                <strong>Email:</strong> <a href="mailto:contact.samedayinduscourier@gmail.com" style="color: white; text-decoration: none;">contact.samedayinduscourier@gmail.com</a>
               </p>
             </div>
 

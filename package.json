@@ -2,6 +2,8 @@
   "name": "sameday-couriers",
   "version": "1.0.0",
   "scripts": {
+    "start": "cd client && npm start",
+    "server": "cd server && npm start",
     "vercel-build": "cd client && npm install && npm run build"
   }
 }

@@ -44,7 +44,7 @@ app.post('/api/quote', async (req, res) => {
     // Email to admin (you)
     const adminMailOptions = {
         from: process.env.EMAIL_USER,
-        to: 'oobishah1@gmail.com',
+        to: process.env.EMAIL_USER || 'contact.samedayinduscourier@gmail.com',
         subject: 'New Quote Request - Sameday Indus Couriers',
         html: `
       <div style="font-family: Arial, sans-serif; padding: 20px; background-color: #f4f4f4;">
@@ -144,7 +144,7 @@ app.post('/api/quote', async (req, res) => {
               💬 <strong>WhatsApp:</strong> <a href="https://wa.me/447561311211" style="color: white; text-decoration: none;">+44 7561 311211</a>
             </p>
             <p style="margin: 10px 0;">
-              ✉️ <strong>Email:</strong> <a href="mailto:oobishah1@gmail.com" style="color: white; text-decoration: none;">oobishah1@gmail.com</a>
+              ✉️ <strong>Email:</strong> <a href="mailto:contact.samedayinduscourier@gmail.com" style="color: white; text-decoration: none;">contact.samedayinduscourier@gmail.com</a>
             </p>
           </div>
 
@@ -179,7 +179,7 @@ app.post('/api/quote', async (req, res) => {
     try {
         // Send email to admin
         await transporter.sendMail(adminMailOptions);
-        console.log('✅ Admin notification email sent to oobishah1@gmail.com');
+        console.log(`✅ Admin notification email sent to ${process.env.EMAIL_USER}`);
 
         // Send confirmation email to client
         await transporter.sendMail(clientMailOptions);
