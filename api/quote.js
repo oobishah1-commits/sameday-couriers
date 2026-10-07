@@ -50,6 +50,9 @@ export default async function handler(req, res) {
             auth: {
                 user: process.env.SMTP_USER || 'info@samedayinduscourier.co.uk',
                 pass: process.env.SMTP_PASS || process.env.EMAIL_PASS
+            },
+            tls: {
+                rejectUnauthorized: false
             }
         });
 
