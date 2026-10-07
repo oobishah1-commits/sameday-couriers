@@ -2,3 +2,7 @@ node_modules/
 .vs/
 .DS_Store
 *.log
+.env
+.env.local
+.env.*
+

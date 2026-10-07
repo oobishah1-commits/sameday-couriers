@@ -17,6 +17,11 @@ app.get('/', (req, res) => {
     res.send('Sameday Couriers API is running!');
 });
 
+// Email validation helper
+const isValidEmail = (email) => {
+    return typeof email === 'string' && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim());
+};
+
 // Quote submission route
 app.post('/api/quote', async (req, res) => {
     const {
@@ -30,43 +35,93 @@ app.post('/api/quote', async (req, res) => {
         additionalDetails
     } = req.body;
 
-    console.log('Quote request received:', req.body);
+    console.log('📧 Quote request received:', { name, phone, email, postcode, deliveryPostcode, date, parcelType });
 
-    // Email configuration
+    // Input validation
+    if (!name || !phone || !email || !postcode || !deliveryPostcode || !date || !parcelType) {
+        return res.status(400).json({
+            success: false,
+            message: 'Missing required fields. Please fill in all required form fields.'
+        });
+    }
+
+    if (!isValidEmail(email)) {
+        return res.status(400).json({
+            success: false,
+            message: 'Invalid email address provided.'
+        });
+    }
+
+    const mailFrom = process.env.MAIL_FROM || process.env.SMTP_USER || 'info@samedayinduscourier.co.uk';
+    const mailTo = process.env.MAIL_TO || process.env.SMTP_USER || 'info@samedayinduscourier.co.uk';
+
+    // SMTP Transporter configuration
     const transporter = nodemailer.createTransport({
-        service: 'gmail',
+        host: process.env.SMTP_HOST || 'mail.samedayinduscourier.co.uk',
+        port: Number(process.env.SMTP_PORT || 465),
+        secure: process.env.SMTP_SECURE !== undefined ? (process.env.SMTP_SECURE === 'true' || process.env.SMTP_SECURE === true) : true,
         auth: {
-            user: process.env.EMAIL_USER,
-            pass: process.env.EMAIL_PASS
+            user: process.env.SMTP_USER || 'info@samedayinduscourier.co.uk',
+            pass: process.env.SMTP_PASS || process.env.EMAIL_PASS
         }
     });
 
-    // Email to admin (you)
+    // Email 1: Notification to Admin
     const adminMailOptions = {
-        from: process.env.EMAIL_USER,
-        to: process.env.EMAIL_USER || 'contact.samedayinduscourier@gmail.com',
-        subject: 'New Quote Request - Sameday Indus Couriers',
+        from: mailFrom,
+        to: mailTo,
+        replyTo: email.trim(),
+        subject: `New Website Enquiry - ${name}`,
         html: `
       <div style="font-family: Arial, sans-serif; padding: 20px; background-color: #f4f4f4;">
-        <div style="max-width: 600px; margin: 0 auto; background-color: white; padding: 30px; border-radius: 10px;">
+        <div style="max-width: 600px; margin: 0 auto; background-color: white; padding: 30px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
           <h2 style="color: #003087; border-bottom: 3px solid #003087; padding-bottom: 10px;">
-            New Quote Request
+            🆕 New Quote Request
           </h2>
           
           <div style="margin: 20px 0;">
-            <p style="margin: 10px 0;"><strong>Name:</strong> ${name}</p>
-            <p style="margin: 10px 0;"><strong>Phone:</strong> ${phone}</p>
-            <p style="margin: 10px 0;"><strong>Email:</strong> ${email}</p>
-            <p style="margin: 10px 0;"><strong>Pickup Postcode:</strong> ${postcode}</p>
-            <p style="margin: 10px 0;"><strong>Delivery Postcode:</strong> ${deliveryPostcode}</p>
-            <p style="margin: 10px 0;"><strong>Date:</strong> ${date}</p>
-            <p style="margin: 10px 0;"><strong>Parcel Type:</strong> ${parcelType}</p>
-            <p style="margin: 10px 0;"><strong>Additional Details:</strong> ${additionalDetails || 'None'}</p>
+            <table style="width: 100%; border-collapse: collapse;">
+              <tr style="background-color: #f8f9fa;">
+                <td style="padding: 12px; border: 1px solid #dee2e6; font-weight: bold; width: 40%;">Customer Name</td>
+                <td style="padding: 12px; border: 1px solid #dee2e6;">${name}</td>
+              </tr>
+              <tr>
+                <td style="padding: 12px; border: 1px solid #dee2e6; font-weight: bold;">Phone Number</td>
+                <td style="padding: 12px; border: 1px solid #dee2e6;">${phone}</td>
+              </tr>
+              <tr style="background-color: #f8f9fa;">
+                <td style="padding: 12px; border: 1px solid #dee2e6; font-weight: bold;">Email Address</td>
+                <td style="padding: 12px; border: 1px solid #dee2e6;">${email}</td>
+              </tr>
+              <tr>
+                <td style="padding: 12px; border: 1px solid #dee2e6; font-weight: bold;">Pickup Postcode</td>
+                <td style="padding: 12px; border: 1px solid #dee2e6;">${postcode}</td>
+              </tr>
+              <tr style="background-color: #f8f9fa;">
+                <td style="padding: 12px; border: 1px solid #dee2e6; font-weight: bold;">Delivery Postcode</td>
+                <td style="padding: 12px; border: 1px solid #dee2e6;">${deliveryPostcode}</td>
+              </tr>
+              <tr>
+                <td style="padding: 12px; border: 1px solid #dee2e6; font-weight: bold;">Delivery Date</td>
+                <td style="padding: 12px; border: 1px solid #dee2e6;">${date}</td>
+              </tr>
+              <tr style="background-color: #f8f9fa;">
+                <td style="padding: 12px; border: 1px solid #dee2e6; font-weight: bold;">Parcel Type</td>
+                <td style="padding: 12px; border: 1px solid #dee2e6;"><strong>${parcelType}</strong></td>
+              </tr>
+              <tr>
+                <td style="padding: 12px; border: 1px solid #dee2e6; font-weight: bold; vertical-align: top;">Additional Details</td>
+                <td style="padding: 12px; border: 1px solid #dee2e6;">${additionalDetails || 'None provided'}</td>
+              </tr>
+            </table>
           </div>
           
           <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid #ddd;">
-            <p style="color: #666; font-size: 12px;">
-              This quote request was submitted from the Sameday Indus Couriers website.
+            <p style="color: #666; font-size: 12px; margin: 0;">
+              📅 Received: ${new Date().toLocaleString('en-GB', { timeZone: 'Europe/London' })}
+            </p>
+            <p style="color: #666; font-size: 12px; margin: 5px 0 0 0;">
+              This quote request was submitted from the Sameday Indus Couriers website. You can reply directly to this email to contact the customer.
             </p>
           </div>
         </div>
@@ -74,24 +129,25 @@ app.post('/api/quote', async (req, res) => {
     `
     };
 
-    // Confirmation email to client
+    // Email 2: Confirmation to Client
     const clientMailOptions = {
-        from: process.env.EMAIL_USER,
-        to: email,
+        from: mailFrom,
+        to: email.trim(),
+        replyTo: mailFrom,
         subject: 'Thank You for Your Quote Request - Sameday Indus Couriers',
         html: `
       <div style="font-family: Arial, sans-serif; padding: 20px; background-color: #f4f4f4;">
         <div style="max-width: 600px; margin: 0 auto; background-color: white; padding: 30px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
           
-          <!-- Header with Logo -->
+          <!-- Header -->
           <div style="text-align: center; margin-bottom: 30px;">
             <h1 style="color: #003087; margin: 0; font-size: 28px;">Sameday Indus Couriers</h1>
-            <p style="color: #666; margin: 5px 0 0 0;">Fast. Reliable. Professional.</p>
+            <p style="color: #666; margin: 5px 0 0 0; font-size: 14px;">Fast. Reliable. Professional.</p>
           </div>
 
           <!-- Main Content -->
           <div style="background-color: #f8f9ff; padding: 25px; border-radius: 8px; margin-bottom: 20px;">
-            <h2 style="color: #003087; margin-top: 0;">Thank You for Contacting Us!</h2>
+            <h2 style="color: #003087; margin-top: 0; font-size: 24px;">Thank You for Contacting Us!</h2>
             <p style="color: #333; line-height: 1.6; font-size: 16px;">
               Dear <strong>${name}</strong>,
             </p>
@@ -99,14 +155,14 @@ app.post('/api/quote', async (req, res) => {
               We have received your quote request and appreciate you choosing Sameday Indus Couriers for your delivery needs.
             </p>
             <p style="color: #333; line-height: 1.6; font-size: 16px;">
-              Our team will review your request and get back to you within <strong style="color: #003087;">1 hour</strong> with a competitive quote.
+              Our team will review your request and get back to you within <strong style="color: #003087; font-size: 18px;">1 hour</strong> with a competitive quote.
             </p>
           </div>
 
           <!-- Quote Summary -->
           <div style="background-color: #fff; border: 2px solid #003087; border-radius: 8px; padding: 20px; margin-bottom: 20px;">
-            <h3 style="color: #003087; margin-top: 0; border-bottom: 2px solid #f0f0f0; padding-bottom: 10px;">
-              Your Quote Details
+            <h3 style="color: #003087; margin-top: 0; border-bottom: 2px solid #f0f0f0; padding-bottom: 10px; font-size: 20px;">
+              📋 Your Quote Details
             </h3>
             <table style="width: 100%; border-collapse: collapse;">
               <tr>
@@ -136,21 +192,21 @@ app.post('/api/quote', async (req, res) => {
 
           <!-- Contact Information -->
           <div style="background-color: #003087; color: white; padding: 20px; border-radius: 8px; margin-bottom: 20px;">
-            <h3 style="margin-top: 0; color: white;">Need Immediate Assistance?</h3>
-            <p style="margin: 10px 0;">
-              📞 <strong>Phone:</strong> <a href="tel:+447561311211" style="color: white; text-decoration: none;">+44 7561 311211</a>
+            <h3 style="margin-top: 0; color: white; font-size: 20px;">📞 Need Immediate Assistance?</h3>
+            <p style="margin: 10px 0; font-size: 16px;">
+              <strong>Phone:</strong> <a href="tel:+447561311211" style="color: white; text-decoration: none;">+44 7561 311211</a>
             </p>
-            <p style="margin: 10px 0;">
-              💬 <strong>WhatsApp:</strong> <a href="https://wa.me/447561311211" style="color: white; text-decoration: none;">+44 7561 311211</a>
+            <p style="margin: 10px 0; font-size: 16px;">
+              <strong>WhatsApp:</strong> <a href="https://wa.me/447561311211" style="color: white; text-decoration: none;">+44 7561 311211</a>
             </p>
-            <p style="margin: 10px 0;">
-              ✉️ <strong>Email:</strong> <a href="mailto:contact.samedayinduscourier@gmail.com" style="color: white; text-decoration: none;">contact.samedayinduscourier@gmail.com</a>
+            <p style="margin: 10px 0; font-size: 16px;">
+              <strong>Email:</strong> <a href="mailto:${mailFrom}" style="color: white; text-decoration: none;">${mailFrom}</a>
             </p>
           </div>
 
           <!-- Why Choose Us -->
           <div style="padding: 20px 0;">
-            <h3 style="color: #003087; margin-bottom: 15px;">Why Choose Us?</h3>
+            <h3 style="color: #003087; margin-bottom: 15px; font-size: 20px;">✨ Why Choose Us?</h3>
             <ul style="color: #333; line-height: 1.8; padding-left: 20px;">
               <li>✓ GPS-tracked deliveries</li>
               <li>✓ Fully insured & vetted drivers</li>
@@ -161,14 +217,14 @@ app.post('/api/quote', async (req, res) => {
 
           <!-- Footer -->
           <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid #ddd; text-align: center;">
-            <p style="color: #666; font-size: 12px; margin: 5px 0;">
-              Same Day Indus Couriers Ltd.
+            <p style="color: #666; font-size: 14px; margin: 5px 0;">
+              <strong>Same Day Indus Couriers Ltd.</strong>
             </p>
             <p style="color: #666; font-size: 12px; margin: 5px 0;">
               18 High Terrace 128, Birmingham, B17 9HL
             </p>
-            <p style="color: #666; font-size: 12px; margin: 15px 0 5px 0;">
-              This is an automated confirmation email. Please do not reply directly to this email.
+            <p style="color: #999; font-size: 11px; margin: 15px 0 5px 0;">
+              You can reply directly to this email if you have any questions.
             </p>
           </div>
         </div>
@@ -177,9 +233,9 @@ app.post('/api/quote', async (req, res) => {
     };
 
     try {
-        // Send email to admin
+        // Send notification email to admin
         await transporter.sendMail(adminMailOptions);
-        console.log(`✅ Admin notification email sent to ${process.env.EMAIL_USER}`);
+        console.log(`✅ Admin notification email sent to ${mailTo}`);
 
         // Send confirmation email to client
         await transporter.sendMail(clientMailOptions);
@@ -190,7 +246,7 @@ app.post('/api/quote', async (req, res) => {
             message: 'Quote request sent successfully! Check your email for confirmation.'
         });
     } catch (error) {
-        console.error('❌ Error sending email:', error);
+        console.error('❌ Error sending email:', error.message || error);
         res.status(500).json({
             success: false,
             message: 'Failed to send quote request. Please try again.'

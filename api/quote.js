@@ -1,5 +1,9 @@
 const nodemailer = require('nodemailer');
 
+const isValidEmail = (email) => {
+    return typeof email === 'string' && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim());
+};
+
 export default async function handler(req, res) {
     // CORS headers
     res.setHeader('Access-Control-Allow-Credentials', true);
@@ -18,33 +22,43 @@ export default async function handler(req, res) {
     try {
         const { name, phone, email, postcode, deliveryPostcode, date, parcelType, additionalDetails } = req.body;
 
-        console.log('📧 Quote request received:');
-        console.log('Name:', name);
-        console.log('Email:', email);
-        console.log('Phone:', phone);
+        console.log('📧 Quote request received:', { name, phone, email, postcode, deliveryPostcode, date, parcelType });
 
         // Validate required fields
         if (!name || !email || !phone || !postcode || !deliveryPostcode || !date || !parcelType) {
             return res.status(400).json({
                 success: false,
-                message: 'Missing required fields'
+                message: 'Missing required fields. Please fill in all required form fields.'
             });
         }
 
-        // Create transporter
+        if (!isValidEmail(email)) {
+            return res.status(400).json({
+                success: false,
+                message: 'Invalid email address provided.'
+            });
+        }
+
+        const mailFrom = process.env.MAIL_FROM || process.env.SMTP_USER || 'info@samedayinduscourier.co.uk';
+        const mailTo = process.env.MAIL_TO || process.env.SMTP_USER || 'info@samedayinduscourier.co.uk';
+
+        // Create SMTP transporter
         const transporter = nodemailer.createTransport({
-            service: 'gmail',
+            host: process.env.SMTP_HOST || 'mail.samedayinduscourier.co.uk',
+            port: Number(process.env.SMTP_PORT || 465),
+            secure: process.env.SMTP_SECURE !== undefined ? (process.env.SMTP_SECURE === 'true' || process.env.SMTP_SECURE === true) : true,
             auth: {
-                user: process.env.EMAIL_USER,
-                pass: process.env.EMAIL_PASS
+                user: process.env.SMTP_USER || 'info@samedayinduscourier.co.uk',
+                pass: process.env.SMTP_PASS || process.env.EMAIL_PASS
             }
         });
 
-        // EMAIL 1: Send to Admin (you)
+        // EMAIL 1: Send to Admin
         const adminMailOptions = {
-            from: process.env.EMAIL_USER,
-            to: process.env.EMAIL_USER || 'contact.samedayinduscourier@gmail.com',
-            subject: 'New Quote Request - Sameday Indus Couriers',
+            from: mailFrom,
+            to: mailTo,
+            replyTo: email.trim(),
+            subject: `New Website Enquiry - ${name}`,
             html: `
         <div style="font-family: Arial, sans-serif; padding: 20px; background-color: #f4f4f4;">
           <div style="max-width: 600px; margin: 0 auto; background-color: white; padding: 30px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
@@ -94,7 +108,7 @@ export default async function handler(req, res) {
                 📅 Received: ${new Date().toLocaleString('en-GB', { timeZone: 'Europe/London' })}
               </p>
               <p style="color: #666; font-size: 12px; margin: 5px 0 0 0;">
-                This quote request was submitted from the Sameday Indus Couriers website.
+                This quote request was submitted from the Sameday Indus Couriers website. You can reply directly to this email to contact the customer.
               </p>
             </div>
           </div>
@@ -103,12 +117,13 @@ export default async function handler(req, res) {
         };
 
         await transporter.sendMail(adminMailOptions);
-        console.log(`✅ Admin email sent to ${process.env.EMAIL_USER}`);
+        console.log(`✅ Admin notification email sent to ${mailTo}`);
 
         // EMAIL 2: Send Confirmation to Client
         const clientMailOptions = {
-            from: process.env.EMAIL_USER,
-            to: email,
+            from: mailFrom,
+            to: email.trim(),
+            replyTo: mailFrom,
             subject: 'Thank You for Your Quote Request - Sameday Indus Couriers',
             html: `
         <div style="font-family: Arial, sans-serif; padding: 20px; background-color: #f4f4f4;">
@@ -175,7 +190,7 @@ export default async function handler(req, res) {
                 <strong>WhatsApp:</strong> <a href="https://wa.me/447561311211" style="color: white; text-decoration: none;">+44 7561 311211</a>
               </p>
               <p style="margin: 10px 0; font-size: 16px;">
-                <strong>Email:</strong> <a href="mailto:contact.samedayinduscourier@gmail.com" style="color: white; text-decoration: none;">contact.samedayinduscourier@gmail.com</a>
+                <strong>Email:</strong> <a href="mailto:${mailFrom}" style="color: white; text-decoration: none;">${mailFrom}</a>
               </p>
             </div>
 
@@ -199,7 +214,7 @@ export default async function handler(req, res) {
                 18 High Terrace 128, Birmingham, B17 9HL
               </p>
               <p style="color: #999; font-size: 11px; margin: 15px 0 5px 0;">
-                This is an automated confirmation email. Please do not reply directly to this email.
+                You can reply directly to this email if you have any questions.
               </p>
             </div>
           </div>
@@ -216,11 +231,10 @@ export default async function handler(req, res) {
         });
 
     } catch (error) {
-        console.error('❌ Error sending emails:', error);
+        console.error('❌ Error sending emails:', error.message || error);
         return res.status(500).json({
             success: false,
-            message: 'Failed to send emails. Please try again.',
-            error: error.message
+            message: 'Failed to send emails. Please try again later.'
         });
     }
 }
